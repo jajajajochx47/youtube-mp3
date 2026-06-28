@@ -14,6 +14,11 @@
 python -m pip install -r requirements.txt
 ```
 
+ติดตั้ง ffmpeg 
+```text
+winget install ffmpeg
+```
+
 ต้องมี `ffmpeg` ด้วย ถ้าใช้ Windows แนะนำแตกไฟล์ไว้ที่:
 
 ```text
