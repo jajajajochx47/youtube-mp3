@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local YouTube MP3 Downloader</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero local-hero">
+        <nav class="topbar">
+          <a class="brand" href="/">Local MP3</a>
+          <span class="local-badge">ใช้ในเครื่อง</span>
+        </nav>
+
+        <div class="hero-content">
+          <p class="eyebrow">Python Local Tool</p>
+          <h1>โหลด MP3 เป็นลิสต์แบบง่าย ๆ</h1>
+          <p class="intro">
+            วางลิงก์ YouTube หลายบรรทัด ระบบจะโหลดทีละรายการและเก็บชื่อเพลงเดิมให้มากที่สุด
+            ใช้เฉพาะวิดีโอหรือเสียงที่คุณมีสิทธิ์ดาวน์โหลดเท่านั้น
+          </p>
+        </div>
+      </section>
+
+      <section class="tool-section local-tool" aria-labelledby="download-title">
+        <div class="tool-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Input</p>
+              <h2 id="download-title">วางลิงก์ทีละบรรทัด</h2>
+            </div>
+            <span id="toolStatus" class="status-pill">กำลังตรวจเครื่องมือ</span>
+          </div>
+
+          <div id="setupBox" class="setup-box" hidden>
+            <strong>ยังติดตั้งไม่ครบ</strong>
+            <p>ต้องมี Python package <code>yt-dlp</code> และ <code>ffmpeg</code> ก่อนถึงจะโหลดเป็น MP3 ได้</p>
+            <pre>python -m pip install yt-dlp</pre>
+            <pre>python -m pip install ffmpeg</pre>
+          </div>
+
+          <form id="downloadForm" class="download-form">
+            <label for="urls">ลิงก์ YouTube</label>
+            <textarea id="urls" name="urls" rows="8" placeholder="https://www.youtube.com/watch?v=...&#10;https://youtu.be/..." required></textarea>
+            <div class="actions">
+              <button type="submit">เริ่มโหลด</button>
+              <button type="button" id="clearButton" class="secondary">ล้าง</button>
+            </div>
+            <p id="message" class="message" role="status"></p>
+          </form>
+        </div>
+
+        <div class="queue-panel" aria-labelledby="queue-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Queue</p>
+              <h2 id="queue-title">รายการโหลด</h2>
+            </div>
+            <span id="jobCount" class="count">0 รายการ</span>
+          </div>
+          <div id="jobs" class="jobs" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
